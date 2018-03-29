@@ -1,7 +1,17 @@
 $(document).ready(function(){
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA8EQvpvwgU_Vkwc65hQisHG-SCNwOfcAg",
+        authDomain: "train-timetable-4c923.firebaseapp.com",
+        databaseURL: "https://train-timetable-4c923.firebaseio.com",
+        projectId: "train-timetable-4c923",
+        storageBucket: "",
+        messagingSenderId: "755926022566"
+    };
+    firebase.initializeApp(config);
 
-
-
+    var database = firebase.database();
+    
     $("#submit").on("click", function(){
         event.preventDefault();
 
