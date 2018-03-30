@@ -5,46 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Train Scheduler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
+    <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="main.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
-    <h1>Train Schedule</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Train Name</th>
-                <th>Destination</th>
-                <th>Frequency</th>
-                <th>Next Train</th>
-                <th>Minutes Away</th>
-            </tr>
-        </thead>
-        <tbody class = "js-train-data">
-            <tr>
-                <td>TEst</td>
-                <td>TEst</td>
-                <td>TEst</td>
-                <td>TEst</td>
-                <td>TEst</td>
-            </tr>
-        </tbody>
-    </table>
-    <form>
-        <label name = "name">Train Name</label>
-        <input type = "text" id = "name" name = "name">
+    <h1 class = "title">Train Schedule</h1>
+    <div class="timetable">
+        <table>
+            <thead class = "tt-title">
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency</th>
+                    <th>Next Train</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody class = "js-train-data">
+            </tbody>
+        </table>
+    </div>
+   
+    <form class = "sidebar">
+        <div class= "row">
+            <label name = "name">Train Name:</label>
+            <input type = "text" id = "name" name = "name">
+        </div>
 
-        <label name = "destination">Destination</label>
-        <input type = "text" id = "destination" name = "destination">
+        <div class= "row">
+            <label name = "destination">Destination:</label>
+            <input type = "text" id = "destination" name = "destination">
+        </div>
 
-        <label name = "first">First Train</label>
-        <input type = "text" id = "first" name = "first">
-
-        <label name = "freq">Frequency</label>
-        <input type = "text" id = "freq" name = "freq">
+        <div class= "row">
+            <label name = "first">First Train: (HH:mm)</label>
+            <input type = "text" id = "first" name = "first">
+        </div>
+        
+        <div class= "row">
+            <label name = "freq">Frequency: (minutes)</label>
+            <input type = "text" id = "freq" name = "freq">
+        </div>
 
         <button id = "submit">Submit</button>
     </form>
