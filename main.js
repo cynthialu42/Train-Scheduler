@@ -21,8 +21,12 @@ $(document).ready(function(){
         $('.collapse.in').toggleClass('in');
         $('a[aria-expanded=true]').attr('aria-expanded', 'false');
     });
-
+    /*database.ref().on("child_removed", function(oldChildSnapshot){
+        console.log("hey");
+        location.reload();
+    });*/
     database.ref().on("child_added",function(childSnapshot){
+        console.log(childSnapshot);
         let dbTrainName = childSnapshot.val().trainName;
         let dbTrainDest = childSnapshot.val().trainDest;
         let dbTrainFirst = moment(childSnapshot.val().trainFirst, "HH:mm");
@@ -54,6 +58,7 @@ $(document).ready(function(){
         let trainFirst =$("#first").val().trim();
         let trainFreq = $("#freq").val().trim();
         //console.log(trainFirst);
+        //database.ref().child(trainName).push({
         database.ref().push({
             trainName: trainName,
             trainDest: trainDest,
@@ -61,7 +66,7 @@ $(document).ready(function(){
             trainFreq: trainFreq
         });
     
-
+        
         /*let dbTrainFirst = moment.utc(trainFirst, "HH:mm");
 
         let currentTime = moment();
@@ -100,8 +105,14 @@ $(document).ready(function(){
         $("#destination").val('');
         $("#first").val('');
         $("#freq").val('');
-        
+        //database.ref().child("NSHF").remove();
+
     });
+
+    /*$("#test").on("click", function(){
+        console.log('here');
+        database.ref().child("BBB").remove();
+    });*/
 
 
 });

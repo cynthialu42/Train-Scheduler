@@ -1,35 +1,11 @@
 .title{
-    height: 100px;
-    width: 100%;
-    background: palegoldenrod;
-}
-.sidebar{
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    margin-top: 100px;
-    background: pink;
-}
-
-.row{
-    margin: .5em 1em 1.5em 1em;
-}
-.timetable{
-    margin-left: 200px;
-    background: paleturquoise;
-    border: 3px dotted black;
-    height: 100%;
-    padding: 2em;
+    font-family: 'Rye', cursive;
+    font-family: 'Sancreek', cursive;
     
-
-
 }
-
-.tt-title{
-    font-weight: bold;
+.purple{
+    background: #6d7fcc;
+    color: white;
 }
 /*
     DEMO STYLE

@@ -13,7 +13,8 @@
         <link rel="stylesheet" href="main.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-         <!-- jQuery CDN -->
+        <link href="https://fonts.googleapis.com/css?family=Ewert|Rye|Sancreek" rel="stylesheet">
+        <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -31,7 +32,7 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header">
-                    <h3>Train Timetable</h3>
+                    <h3 class = "title">Train Timetable</h3>
                 </div>
                     <form>
                         <div class = "cl-row">
@@ -55,6 +56,7 @@
                         </div>
                 
                         <button type = "button" class="btn btn-info" id = "submit">Submit</button>
+                       <!-- <button type = "button" class = "btn btn-primary" id = "test">Test</button>-->
                     </form>
                     
             </nav>
@@ -74,15 +76,15 @@
 
                     </div>
                 </nav>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+                <div class="panel ">
+                    <div class="panel-heading purple">
                         <h3 class="panel-title"><strong>Train Timetable</strong></h3>
                     </div>
                     <div class="panel-body">
                         <table class="table table-hover">
                             <thead class = "tt-title">
                                 <tr>
-                                    <th>Train Name</th>
+                                    <th>Station</th>
                                     <th>Destination</th>
                                     <th>Frequency</th>
                                     <th>Next Train</th>
