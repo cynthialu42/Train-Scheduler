@@ -11,26 +11,38 @@ $(document).ready(function(){
     firebase.initializeApp(config);
 
     var database = firebase.database();
-    
+
+    $("#sidebar").mCustomScrollbar({
+        theme: "minimal"
+    });
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar, #content').toggleClass('active');
+        $('.collapse.in').toggleClass('in');
+        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+    });
+
     database.ref().on("child_added",function(childSnapshot){
         let dbTrainName = childSnapshot.val().trainName;
         let dbTrainDest = childSnapshot.val().trainDest;
-        let dbTrainFirst = moment.utc(childSnapshot.val().trainFirst, "HH:mm");
+        let dbTrainFirst = moment(childSnapshot.val().trainFirst, "HH:mm");
         let dbTrainFreq = childSnapshot.val().trainFreq;
 
         let currentTime = moment();
-        
+        //console.log(dbTrainFirst.format('LT'));
+        //console.log(currentTime.format('LT'));
         let hourDiff = currentTime.diff(dbTrainFirst, 'hours');
         let minuteDiff = currentTime.diff(dbTrainFirst, 'minutes'); 
         let hourDuration = Math.floor(minuteDiff/60);
         let minuteDuration = minuteDiff % 60;
-
+        //console.log(minuteDiff);
+        //console.log(minuteDuration);
         let mod = minuteDuration % dbTrainFreq;
         let minutesLeft = dbTrainFreq - mod;
-
+        //console.log("Minutes left:" + minutesLeft);
         let duration = moment.duration({'minute':minutesLeft});
         let nextTrain = currentTime.add(duration).format('LT');
-
+        //console.log("nextTrain: "+ nextTrain);
         $(".js-train-data").append('<tr> <td>'+ dbTrainName + '</td> <td>' + dbTrainDest + '</td> <td>' + dbTrainFreq + '</td> <td>' + nextTrain+ '</td> <td>'+ minutesLeft + '</td>');
 
     });
@@ -49,6 +61,41 @@ $(document).ready(function(){
             trainFreq: trainFreq
         });
     
+
+        /*let dbTrainFirst = moment.utc(trainFirst, "HH:mm");
+
+        let currentTime = moment();
+        
+        let hourDiff = (currentTime.diff(dbTrainFirst, 'hours'))*-1;
+        let minuteDiff = (currentTime.diff(dbTrainFirst, 'minutes'))*-1; 
+        let hourDuration = Math.floor(minuteDiff/60);
+        let minuteDuration = minuteDiff % 60;
+        //console.log(minuteDiff);
+        console.log(dbTrainFirst.format("LT"));
+        console.log(currentTime.format("LT"));
+        console.log(minuteDiff);
+        console.log(minuteDuration);
+        let mod = minuteDuration % trainFreq;
+        let minutesLeft = trainFreq - mod;
+        console.log("Minutes left:" + minutesLeft);
+        let duration = moment.duration({'minute':minutesLeft});
+        let nextTrain = currentTime.add(duration).format('LT');
+        console.log("nextTrain: "+ nextTrain);
+
+        let fromDate = moment("08:00", "HH:mm");
+        let duration = moment.duration({'hour':2, 'minute':15});
+        let toDate = moment();
+        //toDate.add(duration);
+        console.log(moment().startOf('day'));
+        console.log(fromDate.format('mmmm DD-MMM-YYYY hh:mm a'));
+        console.log(toDate.format('mmmm DD-MMM-YYYY hh:mm a'));
+        var hourDiff = toDate.diff(fromDate,'hours');
+        var minuteDiff = toDate.diff(fromDate,'minutes');
+        let hourDuration = Math.floor(minuteDiff/60);
+        let minuteDuration = minuteDiff % 60;
+    
+        console.log(hourDuration);
+        console.log(minuteDuration);*/
         $("#name").val('');
         $("#destination").val('');
         $("#first").val('');

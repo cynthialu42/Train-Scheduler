@@ -1,58 +1,101 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Train Scheduler</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="reset.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="main.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-</head>
-<body>
-    <h1 class = "title">Train Schedule</h1>
-    <div class="timetable">
-        <table>
-            <thead class = "tt-title">
-                <tr>
-                    <th>Train Name</th>
-                    <th>Destination</th>
-                    <th>Frequency</th>
-                    <th>Next Train</th>
-                    <th>Minutes Away</th>
-                </tr>
-            </thead>
-            <tbody class = "js-train-data">
-            </tbody>
-        </table>
-    </div>
-   
-    <form class = "sidebar">
-        <div class= "row">
-            <label name = "name">Train Name:</label>
-            <input type = "text" id = "name" name = "name">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Collapsible sidebar using Bootstrap 3</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="main.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+         <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <!-- jQuery Custom Scroller CDN -->
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <script src="main.js"></script>
+    </head>
+    <body>
+
+
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>Train Timetable</h3>
+                </div>
+                    <form>
+                        <div class = "cl-row">
+                            <label name = "name">Train Name:</label>
+                            <input class="form-control mr-sm-2" type = "text" id = "name" name = "name" placeholder="ex. BNSF">
+                        </div>
+                
+                        <div class = "cl-row">
+                            <label name = "destination">Destination:</label>
+                            <input class="form-control mr-sm-2" type = "text" id = "destination" name = "destination" placeholder="ex. Chicago">
+                        </div>
+                
+                        <div class = "cl-row">
+                            <label name = "first">First Train: (HH:mm)</label>
+                            <input class="form-control mr-sm-2" type = "text" id = "first" name = "first" placeholder="ex. 08:00">
+                        </div>
+                        
+                        <div class = "cl-row">
+                            <label name = "freq">Frequency: (minutes)</label>
+                            <input class="form-control mr-sm-2" type = "text" id = "freq" name = "freq" placeholder="ex. 15">
+                        </div>
+                
+                        <button type = "button" class="btn btn-info" id = "submit">Submit</button>
+                    </form>
+                    
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </nav>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Train Timetable</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                            <thead class = "tt-title">
+                                <tr>
+                                    <th>Train Name</th>
+                                    <th>Destination</th>
+                                    <th>Frequency</th>
+                                    <th>Next Train</th>
+                                    <th>Minutes Away</th>
+                                </tr>
+                            </thead>
+                            <tbody class = "js-train-data">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class= "row">
-            <label name = "destination">Destination:</label>
-            <input type = "text" id = "destination" name = "destination">
-        </div>
-
-        <div class= "row">
-            <label name = "first">First Train: (HH:mm)</label>
-            <input type = "text" id = "first" name = "first">
-        </div>
-        
-        <div class= "row">
-            <label name = "freq">Frequency: (minutes)</label>
-            <input type = "text" id = "freq" name = "freq">
-        </div>
-
-        <button id = "submit">Submit</button>
-    </form>
-    
-</body>
+    </body>
 </html>
