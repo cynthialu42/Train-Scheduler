@@ -47,7 +47,7 @@ $(document).ready(function(){
         let duration = moment.duration({'minute':minutesLeft});
         let nextTrain = currentTime.add(duration).format('LT');
         //console.log("nextTrain: "+ nextTrain);
-        $(".js-train-data").append('<tr> <td>'+ dbTrainName + '</td> <td>' + dbTrainDest + '</td> <td>' + dbTrainFreq + '</td> <td>' + nextTrain+ '</td> <td>'+ minutesLeft + '</td>');
+        $(".js-train-data").append('<tr class = "train" data-train = "train"> <td>'+ dbTrainName + '</td> <td>' + dbTrainDest + '</td> <td>' + dbTrainFreq + '</td> <td>' + nextTrain+ '</td> <td>'+ minutesLeft + '</td>');
 
     });
     $("#submit").on("click", function(){
@@ -109,10 +109,13 @@ $(document).ready(function(){
 
     });
 
+
     /*$("#test").on("click", function(){
         console.log('here');
         database.ref().child("BBB").remove();
     });*/
 
-
+    $(".test").on("click", function(){
+        console.log("here");
+    });
 });
