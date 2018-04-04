@@ -1,8 +1,7 @@
 .title{
-    font-family: 'Rye', cursive;
-    font-family: 'Sancreek', cursive;
-    
+    font-family: 'Sancreek', cursive; 
 }
+
 .purple{
     background: #6d7fcc;
     color: white;
@@ -87,9 +86,6 @@ a, a:hover, a:focus {
 .cl-row{
     padding: .5em 0em;
 }
-
-
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
